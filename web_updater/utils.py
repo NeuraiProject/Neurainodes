@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# utils.py - Ravennodes Website Data Updater.
+# utils.py - Neurainodes Website Data Updater.
 #
 # By Jeroz, 2019
 #
@@ -253,7 +253,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
             type='scattergeo',
             lon=[-77.4875],
             lat=[39.0437],
-            text='39.0437, -77.4875 <BR> Ravennodes',
+            text='39.0437, -77.4875 <BR> Neurainodes',
             hoverinfo='text',
             mode='markers',
             marker=dict(
@@ -262,7 +262,7 @@ def parse_data(json_folder, output_folder, json_data, new_file, init):
                 color='rgb(57, 65, 130)',
 
             ),
-            name='Ravennodes'
+            name='Neurainodes'
         )
         node_versions.append(node_version)
 

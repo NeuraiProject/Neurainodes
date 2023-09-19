@@ -25,7 +25,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 """
-Ravencoin protocol access for Bitnodes.
+Neurai protocol access for Bitnodes.
 Reference: https://en.bitcoin.it/wiki/Protocol_specification
 
 -------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ MIN_PROTOCOL_VERSION = 70015
 PROTOCOL_VERSION = 70026
 FROM_SERVICES = 0
 TO_SERVICES = 1  # NODE_NETWORK
-USER_AGENT = "/Ravennodes:0.1/"
+USER_AGENT = "/Neurainodes:0.1/"
 HEIGHT = 123000
 RELAY = 0  # set to 1 to receive all txs
 
@@ -957,7 +957,7 @@ class Connection(object):
 def main():
     # seed-raven.ravencoin.org
     #to_addr = ("34.248.13.29", PORT)
-    to_addr = ("104.18.39.222", PORT)
+    to_addr = ("seed1.neurai.org", PORT)
     to_services = TO_SERVICES
 
     handshake_msgs = []

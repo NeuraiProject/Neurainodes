@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# ravennodes.py - Ravennodes website
+# ravennodes.py - Neurainodes website
 #
 # By Jeroz Feb, 2019
 #
@@ -39,7 +39,7 @@ dfversion = pd.read_csv("tables/version_frequency.csv")
 dfcount = pd.read_csv("tables/node_count.csv")
 last_update = dfcount['Date'].astype('str').iloc[-1] + ' GMT'
 
-# Build Ravennodes website
+# Build Neurainodes website
 ravennodes = Flask(__name__)
 
 @ravennodes.route('/')

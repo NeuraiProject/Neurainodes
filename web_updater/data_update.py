@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# data_update.py - Ravennodes Website Data Updater.
+# data_update.py - Neurainodes Website Data Updater.
 #
 # By Jeroz, 2019
 #

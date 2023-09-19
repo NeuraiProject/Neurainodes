@@ -1,5 +1,5 @@
 #!/bin/bash
-# --- Ravencoin mainnet: 5241564e (db = 0) ---
+# --- Neurai mainnet: 5241564e (db = 0) ---
 python2 -u crawl.py conf/crawl.conf.default master > log/crawl.5241564e.master.1.out 2>&1 &
 python2 -u crawl.py conf/crawl.conf.default slave > log/crawl.5241564e.slave.1.out 2>&1 &
 python2 -u crawl.py conf/crawl.conf.default slave > log/crawl.5241564e.slave.2.out 2>&1 &

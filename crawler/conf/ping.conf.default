@@ -28,7 +28,7 @@ protocol_version = 70026
 # crawler. This is so that users will not confuse your crawler with another
 # instance that is already running and generating data for the project.
 # -----------------------------------------------------------------------------
-user_agent = /Ravennodes:0.1/
+user_agent = /Neurainodes:0.1/
 
 # Services to use for outgoing network address message
 services = 0

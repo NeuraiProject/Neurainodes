@@ -1,36 +1,38 @@
-# Ravennodes
+# Neurainodes
 This project is based on [Bitnodes](https://github.com/ayeowch/bitnodes).
 
-Ravennodes is currently being developed to estimate the size of the Ravencoin network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using Ravennodes. These nodes are either behind firewalls or they are configured to not listen for connections.
+Neurainodes is currently being developed to estimate the size of the Neurai network by finding all the reachable nodes in the network. These are the nodes that accept incoming connections. Why you should run a full node is explained here on the [Bitcoin wiki](https://en.bitcoin.it/wiki/Full_node). The current methodology involves sending [`getaddr`](https://en.bitcoin.it/wiki/Satoshi_Client_Node_Discovery) messages recursively to find all the reachable nodes in the network, starting from a set of seed nodes. It is worth mentioning that this method of estimating network size [does not list all full nodes](https://en.bitcoin.it/wiki/Clearing_Up_Misconceptions_About_Full_Nodes) because not all nodes have an open port that can be probed using Neurainodes. These nodes are either behind firewalls or they are configured to not listen for connections.
 
 The goal is to run the service as efficient as possible. The ravennodes crawler, web_updater, and website currently all run on an a1 medium AWS server (1 vCPu, 2GB RAM). 
 
 ## TOC
-- [Ravennodes Crawler](#ravennodes-crawler)
-  * [Main Changes](#main-changes)
-  * [Dependencies](#dependencies)
+- [Neurainodes](#neurainodes)
+  - [TOC](#toc)
+- [Neurainodes Crawler](#neurainodes-crawler)
+  - [Main Changes](#main-changes)
+  - [Dependencies](#dependencies)
       - [Python Packages](#python-packages)
-  * [Steps on setting up a machine to run Ravennodes](#steps-on-setting-up-a-machine-to-run-ravennodes)
-    + [Ubuntu 18.04, 16GB RAM Machine:](#ubuntu-1804--16gb-ram-machine-)
+  - [Steps on setting up a machine to run Neurainodes](#steps-on-setting-up-a-machine-to-run-neurainodes)
+    - [Ubuntu 18.04:](#ubuntu-1804)
       - [Install redis](#install-redis)
-      - [Install Ravennodes and set up dependencies](#install-ravennodes-and-set-up-dependencies)
-      - [Update open file limits to prevent Ravennodes crashing on IO errors](#update-open-file-limits-to-prevent-ravennodes-crashing-on-io-errors)
+      - [Install Neurainodes and set up dependencies](#install-neurainodes-and-set-up-dependencies)
+      - [Update open file limits to prevent Neurainodes crashing on IO errors](#update-open-file-limits-to-prevent-neurainodes-crashing-on-io-errors)
       - [Start redis service](#start-redis-service)
-      - [To start the Ravennodes crawler](#to-start-the-ravennodes-crawler)
-- [Ravennodes Web-updater](#ravennodes-web-updater)
-  * [Dependencies](#dependencies-1)
-      - [Python Packages](#python-packages-1)
-  * [To start the Ravennodes Web-updater](#to-start-the-ravennodes-web-updater)
-- [Ravennodes website](#ravennodes-website)
-  * [Dependencies](#dependencies-2)
-      - [Python Packages](#python-packages-2)
-  * [Website hosting](#website-hosting)
+      - [To start the Neurainodes crawler](#to-start-the-neurainodes-crawler)
+- [Neurainodes Web-updater](#neurainodes-web-updater)
+  - [Dependencies](#dependencies-1)
+    - [Python Packages](#python-packages-1)
+  - [To start the Neurainodes Web-updater](#to-start-the-neurainodes-web-updater)
+- [Neurainodes website](#neurainodes-website)
+  - [Dependencies](#dependencies-2)
+    - [Python Packages](#python-packages-2)
+  - [Website hosting](#website-hosting)
 - [Call for improvements](#call-for-improvements)
 
-# Ravennodes Crawler
+# Neurainodes Crawler
 
 ## Main Changes
-- Changed parameters to support Ravencoin
+- Changed parameters to support Neurai
 - Turned off Tor network support.
 
 ## Dependencies
@@ -51,7 +53,7 @@ The goal is to run the service as efficient as possible. The ravennodes crawler,
 | redis       | 2.10.6
 | requests    | 2.20.0
 
-## Steps on setting up a machine to run Ravennodes 
+## Steps on setting up a machine to run Neurainodes 
 ### Ubuntu 18.04:
 #### Install redis 
 ```
@@ -62,7 +64,7 @@ sudo apt install redis
 # I prefer running redis manually
 # Optional, remove the service: sudo service redis-server disable
 ```
-#### Install Ravennodes and set up dependencies
+#### Install Neurainodes and set up dependencies
 ```
 #Move redis conf file
 sudo cp [LOCATION]/crawler/depends/redis/redis.conf /etc/redis/
@@ -77,7 +79,7 @@ bash geoip/update.sh
 export MAXMIND_LICENSE_KEY=YOUR-KEY-HERE
 ```
 
-#### Update open file limits to prevent Ravennodes crashing on IO errors
+#### Update open file limits to prevent Neurainodes crashing on IO errors
 ```
 # Edit the following file:
 sudo nano /etc/security/limits.conf
@@ -111,17 +113,17 @@ redis-server /etc/redis/redis.conf
 
 #Make sure the file redis.sock is made in /tmp/
 ```
-#### To start the Ravennodes crawler
+#### To start the Neurainodes crawler
 Open a new console, activate the python 2.7 virtual environment and start the crawler:
 ```
-cd [LOCATION]/Ravennodes
+cd [LOCATION]/Neurainodes
 ./start.sh
 ```
-Data output will be available in `~/Ravennodes/data/export/5241564e`
+Data output will be available in `~/Neurainodes/data/export/5241564e`
 
-Process logs  will be available in `~/Ravennodes/log`
+Process logs  will be available in `~/Neurainodes/log`
 
-# Ravennodes Web-updater
+# Neurainodes Web-updater
 - Data change watcher [adaptation from Michael Cho](https://www.michaelcho.me/article/using-pythons-watchdog-to-monitor-changes-to-a-directory) looking for crawler updates
 - Data updater generating ravencoin nodes tables and world maps for the website
 
@@ -136,14 +138,14 @@ watchdog      | 0.9.0
 numpy         | 1.16.1
 plotly        | 3.6.1
 
-## To start the Ravennodes Web-updater
+## To start the Neurainodes Web-updater
 Open a new console, activate the python 3.7 virtual environment and start the updater:
 ```
 cd [LOCATION]/web_updater
 ./start.sh
 ```
 
-# Ravennodes website
+# Neurainodes website
 - Website built using flask
 
 ## Dependencies
@@ -163,7 +165,7 @@ ___
 
 -Jeroz
 
-https://github.com/jeroz1/Ravennodes
-https://github.com/RavenCommunity/Ravennodes
+https://github.com/jeroz1/Neurainodes
+https://github.com/RavenCommunity/Neurainodes
 
 
